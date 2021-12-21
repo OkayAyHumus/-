@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+{% extends 'imageapp/base.html' %}
+
+{% block content %}
+<div class="container">
+    <img src="{{image_url}}" alt="" style="width:200px;">
+    <p>{% if y_result == 0 %}猫です{% else %}犬です{% endif %}</p>
+    <p>{% if y_result == 0 %}こたつが好きです{% else %}わんわん吠えます{% endif %}</p>
+    <p>信頼度{{ y_proba_p }}"%"</p>
+
+</div>
+
+    
+{% endblock content %}
+
+    
