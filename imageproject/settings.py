@@ -26,7 +26,7 @@ SECRET_KEY = 'oiz%-ghgp+s=ax#j^o_j=t!a976m%#s#ay7lago-3v%z5r_ll='
 DEBUG = False
 
 # ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['guarded-garden-12706.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -123,12 +123,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+STATIC_URL = '/static/'
 
 # import django_heroku
 # django_heroku.settings(locals())
@@ -142,12 +138,3 @@ LOGIN_REDIRECT_URL='index'
 
 LOGOUT_URL='logout'
 LOGOUT_REDIRECT_URL='login'
-
-try:
-    from config.local_settings import *
-except ImportError:
-    pass
-
-if not DEBUG:
-    import django_heroku
-    django_heroku.settings(locals())
