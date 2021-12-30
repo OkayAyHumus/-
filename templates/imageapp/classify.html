@@ -2,15 +2,34 @@
 {% extends 'imageapp/base.html' %}
 
 {% block content %}
-<div class="container">
-    <img src="{{image_url}}" alt="" style="width:200px;">
-    <p>{% if y_result == 0 %}猫です{% else %}犬です{% endif %}</p>
-    <p>{% if y_result == 0 %}こたつが好きです{% else %}わんわん吠えます{% endif %}</p>
-    <p>信頼度{{ y_proba_p }}"%"</p>
+<div class="container" id="proba_img">
+    <div style="width:60%; margin:0 auto; margin-bottom: 30px;">
 
+        <img src="{{image_url}}" style="width:100%; margin-top:20px; border-bottom:solid 2px; border-top:solid 2px;"
+            alt="">
+    </div>
+    <div style="width:60%; margin:0 auto;">
+        <h4 id="label"
+            style="width:100%; text-align:left; margin-top:20px; border-bottom:solid 2px; border-top:solid 2px;">
+            判定結果：{% if y_result == 0 %}銀杏です{% elif y_result == 1 %}紅葉です{% else %}桜です{% endif %}
+        </h4>
+        <h4 id="comment"
+            style="width:100%; text-align:left; margin-top:20px; border-bottom:solid 2px; border-top:solid 2px;">
+            コメント：{% if y_result == 0 %}秋には綺麗に黄色に色づきます{% elif y_result == 1 %}かわいい葉が特徴的です{% else %}日本人の心です{% endif %}
+        </h4>
+        <h4 id="proba"
+            style="width:100%; text-align:left; margin-top:20px; border-bottom:solid 2px; border-top:solid 2px;">
+            信頼度：{{ y_proba_p }} %
+        </h4>
+
+
+    </div>
+    
+    <button>
+        <a href="{% url 'index' %}" style="text-decoration: none; color:black;">戻る</a>
+        
+    </button>
 </div>
 
-    
-{% endblock content %}
 
-    
+{% endblock content %}
