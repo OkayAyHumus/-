@@ -25,7 +25,6 @@ SECRET_KEY = 'oiz%-ghgp+s=ax#j^o_j=t!a976m%#s#ay7lago-3v%z5r_ll='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-# ALLOWED_HOSTS = ['*']
 ALLOWED_HOSTS = ['*']
 
 
@@ -81,11 +80,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
-import dj_database_url
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
-
 
 
 # Password validation
