@@ -5,6 +5,9 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 
+import os
+
+
 
 
 
@@ -45,7 +48,10 @@ def index(request):
 
 
             net =Net().cpu().eval()
-            net.load_state_dict(torch.load('/model/f_omomi.pt', map_location=torch.device('cpu')))
+            PT = os.path.abspath('model/f_omomi.pt')
+           
+
+            net.load_state_dict(torch.load(PT, map_location=torch.device('cpu')))
             y = net(im.unsqueeze(0))
             y_proba = F.softmax(y, dim=-1)
             y_proba = y.sort(dim=1, descending=True)
@@ -65,6 +71,8 @@ def index(request):
     else:
         form = ImageForm()
         return render(request, 'imageapp/index.html', {'form':form})
+
+
 
 
 
