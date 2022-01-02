@@ -45,11 +45,11 @@ def index(request):
 
 
             net =Net().cpu().eval()
-            net.load_state_dict(torch.load('imageproject/model/f_omomi.pt', map_location=torch.device('cpu')))
+            net.load_state_dict(torch.load('../imageproject/model/f_omomi.pt', map_location=torch.device('cpu')))
             y = net(im.unsqueeze(0))
             y_proba = F.softmax(y, dim=-1)
             y_proba = y.sort(dim=1, descending=True)
-            y_proba_p = round(y_proba[0][0][0].item(),1)*100
+            y_proba_p = round(y_proba[0][0][0].item(),1)*10
             y_result = torch.argmax(y)
             if y_result==0:
                 y_result_t ='銀杏'
