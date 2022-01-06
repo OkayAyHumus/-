@@ -117,11 +117,25 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
+
+
+# 追記
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # 追記
+# 追記
+
+
 STATIC_URL = '/static/'
 
 # import django_heroku
 # django_heroku.settings(locals())
+
+
+# 追記
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+# 追記
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
