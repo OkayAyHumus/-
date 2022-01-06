@@ -48,8 +48,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', 
+    'whitenoise.middleware.WhiteNoiseMiddleware', #追記　admin対策
 ]
+
+
 
 ROOT_URLCONF = 'imageproject.urls'
 
@@ -81,6 +83,8 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+
 
 
 # Password validation
@@ -125,7 +129,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # 追記
 # 追記
 
 
+
+
 STATIC_URL = '/static/'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'#admin対策
 
 # import django_heroku
 # django_heroku.settings(locals())
