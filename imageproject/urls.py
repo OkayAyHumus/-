@@ -7,6 +7,6 @@ urlpatterns = [
 ]
 
 
-from imageapp import views
+# from imageapp import views
 
-handler500 = views.my_customized_server_error
+# handler500 = views.my_customized_server_error
