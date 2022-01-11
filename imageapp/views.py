@@ -64,7 +64,7 @@ def index(request):
             else:
                 y_result_t ='桜'
 
-            ModelFile.objects.create(label=y_result_t, proba=y_proba_p)
+            ModelFile.objects.create(image=form,label=y_result_t, proba=y_proba_p)
             
             return render(request,'imageapp/classify.html',{'y_result':y_result,'y_proba_p':y_proba_p , 'image_url':image_url})
 
