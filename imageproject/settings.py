@@ -32,11 +32,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.auth', 'django.contrib.contenttypes', 'django.contrib.sessions', 'django.contrib.messages', 'django.contrib.staticfiles',
     'imageapp',
 ]
 
@@ -135,8 +131,8 @@ STATIC_URL = '/static/'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'#admin対策
 
-# import django_heroku
-# django_heroku.settings(locals())
+import django_heroku
+django_heroku.settings(locals())
 
 
 # 追記
