@@ -39,7 +39,7 @@ def index(request):
         image_url = 'media/documents/{}'.format(img_name)
    
 
-        form = ImageForm(request.POST, request.FILES)
+        form = ImageForm(request.POST, request.FILES,)
        
         if form.is_valid():
             form.save()
@@ -54,8 +54,8 @@ def index(request):
             net.load_state_dict(torch.load(PT, map_location=torch.device('cpu')))
             y = net(im.unsqueeze(0))
             y_proba = F.softmax(y, dim=-1)
-            y_proba = y.sort(dim=1, descending=True)
-            y_proba_p = round(y_proba[0][0][0].item(),1)*10
+            y_proba_s = y_proba.sort(dim=1, descending=True)
+            y_proba_p = round(y_proba_s[0][0][0].item(),1)*100
             y_result = torch.argmax(y)
             if y_result==0:
                 y_result_t ='銀杏'
@@ -64,7 +64,15 @@ def index(request):
             else:
                 y_result_t ='桜'
 
-            ModelFile.objects.create(label=y_result_t, proba=y_proba_p)
+            # form.label = label=y_result_t
+            # form.proba = label=y_proba_p
+            # ModelFile.objects.create(**form.cleaned_data)
+            DD = ModelFile.objects.all().last()
+            DD.delete()
+            ModelFile.objects.create(image=image_url,label=y_result_t, proba=y_proba)
+            
+           
+            
             
             
             return render(request,'imageapp/classify.html',{'y_result':y_result,'y_proba_p':y_proba_p , 'image_url':image_url})

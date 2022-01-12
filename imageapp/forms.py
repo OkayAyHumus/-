@@ -7,11 +7,14 @@ class ImageForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['image'].widget.attrs['id'] = 'image-input'
+        # self.fields['label'].widget.attrs['id'] = 'label-input'
+        # self.fields['proba'].widget.attrs['id'] = 'proba-input'
 
 
     class Meta:
         model = ModelFile
         fields = ('image',)
+        # fields = ('image','label','proba')
 
 # class ProbaForm(forms.ModelForm):   
 #     def __init__(self, *args, **kwargs):
