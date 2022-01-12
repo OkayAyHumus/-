@@ -69,7 +69,7 @@ def index(request):
             # ModelFile.objects.create(**form.cleaned_data)
             DD = ModelFile.objects.all().last()
             DD.delete()
-            ModelFile.objects.create(image=image_url,label=y_result_t, proba=y_proba)
+            ModelFile.objects.create(image=image_url,label=y_result_t, proba=y_proba_p)
             
            
             
