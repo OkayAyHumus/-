@@ -26,7 +26,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
+# セキュリティキーのみ消してます
 # Application definition
 
 INSTALLED_APPS = [
